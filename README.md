@@ -9,7 +9,7 @@ HBPlayground는 백엔드 기능 테스트와 개인 학습을 위한 SpringBoot
 ## 🛠 환경 & 기술 스택
 
 - **Framework**: Spring Boot 3.1.3
-- **Build Tool**: Gradle 9.0
+- **Build Tool**: Gradle 8.2.1
 - **IDE**: IntelliJ IDEA Community Edition
 - **Persistence**: Spring Data JPA
 - **Language**: Java 17
