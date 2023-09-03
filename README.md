@@ -16,3 +16,6 @@ HBPlayground는 백엔드 기능 테스트와 개인 학습을 위한 SpringBoot
 - **Language**: Java 17
 - **View Template**: Thymeleaf
 - **Version Control**: Git
+
+## 💻 현재 진행중인 작업
+- **게시판** : '/board', 기본 CRUD 완성, [댓글과 댓글의댓글, 수정삭제 권한] 미완성
