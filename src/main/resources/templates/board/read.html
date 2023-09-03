@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <div th:replace="~{fragments/head.html :: fragment-head}"></div>
+    <link rel="stylesheet" href="/css/board.css">
+    <body>
+    <div th:replace="~{fragments/header.html :: fragment-header}"></div>
+
+        <div class="container">
+            <h1 class="board-name">게시글</h1>
+            <div class="table">
+                <table>
+                    <colgroup>
+                        <col width="30%">
+                        <col width="20%">
+                        <col width="10%">
+                        <col width="40%">
+                    </colgroup>
+                    <tbody>
+                    <tr>
+                        <th>제목</th>
+                        <td colspan="3" class="view-title" th:text="${post.title}"></td>
+                    </tr>
+                    <tr>
+                        <th>작성자</th>
+                        <td th:text="${post.writer}"></td>
+                        <th>작성일</th>
+                        <td th:text="${post.modifiedDate == null ? #temporals.format(post.createdDate, 'yyyy-MM-dd HH:mm') : #temporals.format(post.modifiedDate, 'yyyy-MM-dd HH:mm')}"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="4" class="content">
+                            <p th:text="${post.content}"></p>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="d-flex justify-content-end" style="margin: 20px;">
+                <a th:href="@{/board/{board_id}/edit(board_id=${post.boardId})}" class="btn btn-primary me-2">수정</a>
+                <button type="button" class="btn btn-danger delete-btn" th:data-board-id="${post.boardId}">삭제</button>
+                <div id="deleteMessage"></div>
+            </div>
+
+            <div>
+                <button class="btn btn-secondary rounded-pill py-3 px-5 body-font board-list"
+                        type="button" onclick="goToBoardList()">목록</button>
+            </div>
+        </div>
+
+    <!--Footer-->
+    <div th:replace="~{fragments/footer.html :: fragment-footer}"></div>
+    <!--Libs-->
+    <div th:replace="~{fragments/libs.html :: fragment-libs}"></div>
+    <script src="/js/board.js"></script>
+    </body>
+</html>

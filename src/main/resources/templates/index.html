@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-	<div th:replace="fragments/head.html :: fragment-head"></div>
+	<div th:replace="~{fragments/head.html :: fragment-head}"></div>
 
 	<body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
 		<!--Header-->
-		<div th:replace="fragments/header.html :: fragment-header"></div>
+		<div th:replace="~{fragments/header.html :: fragment-header}"></div>
 	  <section id="home-section" class="hero">
 		  <div class="home-slider  owl-carousel">
 	      <div class="slider-item ">
@@ -570,8 +570,8 @@
       </div>
     </section>
 		<!--Footer-->
-		<div th:replace="fragments/footer.html :: fragment-footer"></div>
+		<div th:replace="~{fragments/footer.html :: fragment-footer}"></div>
 		<!--Libs-->
-		<div th:replace="fragments/libs.html :: fragment-libs"></div>
+		<div th:replace="~{fragments/libs.html :: fragment-libs}"></div>
 	</body>
 </html>

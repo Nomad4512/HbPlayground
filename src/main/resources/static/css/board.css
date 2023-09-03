@@ -1,0 +1,49 @@
+@charset "UTF-8";
+
+.board-name {
+    margin-top: 100px;
+}
+
+.table {
+    margin-top: 60px;
+    color: white;
+}
+
+.pagination ul {
+    list-style-type: none; /* 번호나 점 제거 */
+}
+
+.pagination {
+    margin: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pagination-buttons {
+  display: inline-block;
+  list-style: none;
+  padding: 0;
+}
+
+.pagination-buttons li {
+  display: inline-block;
+  margin: 0 5px;
+}
+
+.pagination-buttons li a {
+  text-decoration: none;
+  padding: 5px 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.pagination-buttons li.active a {
+  background-color: #333;
+  color: #fff;
+}
+
+.pagination-buttons li.disabled a {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

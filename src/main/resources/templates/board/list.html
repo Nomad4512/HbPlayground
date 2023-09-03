@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <div th:replace="~{fragments/head.html :: fragment-head}"></div>
+    <link rel="stylesheet" href="/css/board.css">
+    <body>
+    <div th:replace="~{fragments/header.html :: fragment-header}"></div>
+
+        <div class="container">
+            <h1 class="board-name">게시판</h1>
+
+            <!-- 검색 전 -->
+            <div th:if="${searchList == null or searchList.empty}">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th style="width: 5%;">No.</th>
+                            <th style="width: 40%;">제목</th>
+                            <th style="width: 8%;">작성자</th>
+                            <th style="width: 18%;">작성일</th>
+                        </tr>
+                    </thead>
+                    <!-- 공지사항 목록 반복 -->
+                    <tbody>
+                        <tr th:each="post : ${postList}">
+                            <td th:text="${post.boardId}"></td>
+                            <td>
+                                <a th:href="@{/board/{id}(id=${post.boardId})}" th:text="${post.title}"></a>
+                            </td>
+                            <td th:text="${post.writer}"></td>
+                            <td th:text="${post.modifiedDate == null ? #temporals.format(post.createdDate, 'yyyy-MM-dd HH:mm') : #temporals.format(post.modifiedDate, 'yyyy-MM-dd HH:mm')}"></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <!-- 페이징 처리를 위한 코드 -->
+                <div class="pagination" th:if="${page != null and totalPages > 1}">
+                    <ul class="pagination-buttons">
+                        <!-- 첫 페이지로 이동 -->
+                        <li th:if="${page != 1}" th:class="${page == 1} ? 'disabled'">
+                            <a th:href="@{/board/(page=1)}">처음</a>
+                        </li>
+                        <!-- 이전 버튼 -->
+                        <li th:if="${((page-1)/5)*5 > 0}">
+                            <a th:href="@{/board/(page=${((page-1)/5)*5})}">이전</a>
+                        </li>
+                        <!-- 페이지 번호 표시 -->
+                        <li th:each="pageNumber : ${#numbers.sequence(((page-1)/5)*5 + 1, ((page-1)/5)*5 + 5)}" th:class="${pageNumber == page} ? 'active'">
+                            <a th:if="${pageNumber <= totalPages}" th:href="@{/board/(page=${pageNumber})}" th:text="${pageNumber}"></a>
+                        </li>
+                        <!-- 다음 버튼 -->
+                        <li th:if="${((page-1)/5)*5 + 6 <= totalPages}">
+                            <a th:href="@{/board/(page=${((page-1)/5)*5 + 6})}">다음</a>
+                        </li>
+                        <!-- 마지막 페이지로 이동 -->
+                        <li th:if="${page != totalPages}">
+                            <a th:href="@{/board/(page=${totalPages})}">마지막</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 검색후 -->
+            <div th:unless="${searchList == null or searchList.empty}">
+                <table id="table" class="table">
+                    <thead id="thead">
+                        <tr>
+                            <th style="width: 5%;">No.</th>
+                            <th style="width: 40%;">제목</th>
+                            <th style="width: 8%;" class="wide-md">작성자</th>
+                            <th style="width: 18%;" class="hide-md">작성일</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbody">
+                    <tr th:each="post : ${searchList}">
+                        <td th:text="${post.boardId}"></td>
+                        <td>
+                            <a th:href="@{/board/{id}(id=${post.boardId})}" th:text="${post.title}"></a>
+                        </td>
+                        <td th:text="${post.writer}"></td>
+                        <td th:text="${post.modifiedDate == null ? #temporals.format(post.createdDate, 'yyyy-MM-dd HH:mm') : #temporals.format(post.modifiedDate, 'yyyy-MM-dd HH:mm')}"></td>
+                    </tr>
+                    </tbody>
+                </table>
+
+
+                <!-- 페이징 처리를 위한 코드 -->
+                <div class="pagination" th:if="${page != null and totalPages > 1}">
+                    <ul class="pagination-buttons">
+                        <!-- 첫 페이지로 이동 -->
+                        <li th:if="${page != 1}" th:class="${page == 1} ? 'disabled'">
+                            <a th:href="@{/board/search(keyword=${keyword}, page=1)}">처음</a>
+                        </li>
+                        <!-- 이전 버튼 -->
+                        <li th:if="${((page-1)/5)*5 > 0}">
+                            <a th:href="@{/board/search(keyword=${keyword}, page=${((page-1)/5)*5})}">이전</a>
+                        </li>
+                        <!-- 페이지 번호 표시 -->
+                        <li th:each="pageNumber : ${#numbers.sequence(((page-1)/5)*5 + 1, ((page-1)/5)*5 + 5)}" th:class="${pageNumber == page} ? 'active'">
+                            <a th:if="${pageNumber <= totalPages}" th:href="@{/board/search(keyword=${keyword}, page=${pageNumber})}" th:text="${pageNumber}"></a>
+                        </li>
+                        <!-- 다음 버튼 -->
+                        <li th:if="${((page-1)/5)*5 + 6 <= totalPages}">
+                            <a th:href="@{/board/search(keyword=${keyword}, page=${((page-1)/5)*5 + 6})}">다음</a>
+                        </li>
+                        <!-- 마지막 페이지로 이동 -->
+                        <li th:if="${page != totalPages}">
+                            <a th:href="@{/board/search(keyword=${keyword}, page=${totalPages})}">마지막</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <form action="/board/search" method="get">
+                <input type="text" name="keyword" placeholder="검색어를 입력하세요" />
+                <button type="submit">검색</button>
+            </form>
+
+            <button class="btn btn-primary" onclick="goToPostForm()">글쓰기</button>
+
+        </div>
+
+    <!--Footer-->
+    <div th:replace="~{fragments/footer.html :: fragment-footer}"></div>
+    <!--Libs-->
+    <div th:replace="~{fragments/libs.html :: fragment-libs}"></div>
+    <script src="/js/board.js"></script>
+    </body>
+
+</html>

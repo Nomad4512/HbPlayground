@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <div th:replace="~{fragments/head.html :: fragment-head}"></div>
+    <link rel="stylesheet" href="/css/board.css">
+    <body>
+    <div th:replace="~{fragments/header.html :: fragment-header}"></div>
+
+        <div class="container">
+            <h1 class="board-name">공지글 쓰기</h1>
+            <section>
+                <form action="/board/posts" method="post" id="createPostForm">
+                    <div style="width: 80%;">
+                        <div>
+                            <label for="title">제목</label>
+                            <input type="text" id="title" name="title" class="form-control" placeholder="제목을 입력해주세요." required>
+                        </div>
+                        <div>
+                            <label for="writer">작성자</label>
+                            <input type="text" id="writer" name="writer" class="form-control" placeholder="이름을 입력해주세요." required>
+                        </div>
+                        <div>
+                            <label for="pass">비밀번호</label>
+                            <input type="text" id="pass" name="pass" class="form-control" placeholder="비밀번호를 입력해주세요." required>
+                        </div>
+                        <div>
+                            <label for="content">내용</label>
+                            <textarea id="content" name="content" class="form-control" placeholder="내용을 입력해주세요." rows="5" required></textarea><br>
+                        </div>
+                    </div>
+                    <div>
+                        <button id="submitButton" class="btn btn-secondary rounded-pill py-3 px-5" type="submit">등록</button>
+                        <button id="cancelButton" class="btn btn-secondary rounded-pill py-3 px-5" type="button" onclick="cancelEdit()">취소</button>
+                    </div>
+                </form>
+            </section>
+        </div>
+
+    <!--Footer-->
+    <div th:replace="~{fragments/footer.html :: fragment-footer}"></div>
+    <!--Libs-->
+    <div th:replace="~{fragments/libs.html :: fragment-libs}"></div>
+    <script src="/js/board.js"></script>
+    </body>
+</html>
