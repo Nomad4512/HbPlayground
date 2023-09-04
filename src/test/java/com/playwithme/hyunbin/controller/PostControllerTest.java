@@ -2,6 +2,7 @@ package com.playwithme.hyunbin.controller;
 
 import com.playwithme.hyunbin.domain.Post;
 import com.playwithme.hyunbin.service.PostService;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -27,6 +28,7 @@ public class PostControllerTest {
     private PostService postService;
 
     @Test
+    @DisplayName("목록 가져오기 테스트")
     void testGetAllPosts() throws Exception {
         when(postService.getAllpostsByPage(anyInt(), anyInt())).thenReturn(new PageImpl<>(Collections.emptyList()));
 
