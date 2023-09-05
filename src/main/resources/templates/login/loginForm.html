@@ -3,6 +3,7 @@
 	<div th:replace="~{fragments/head.html :: fragment-head}"></div>
 	<link rel="stylesheet" href="/css/login.css">
 	<body>
+		<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 		<main class="main">
 			<div class="container">
 				<section class="wrapper">
@@ -27,24 +28,24 @@
 					</form>
 					<div class="striped">
 						<span class="striped-line"></span>
-						<span class="striped-text">또는</span>
+						<span class="striped-text">또는 </span>
 						<span class="striped-line"></span>
 					</div>
 					<div class="method">
 						<div class="method-control">
-							<a href="#" class="method-action">
+							<a href="@{/oauth2/authorization/google}" class="method-action">
 								<i class="ion ion-logo-google"></i>
 								<span>Sign in with Google</span>
 							</a>
 						</div>
 						<div class="method-control">
-							<a href="/login/kakao" class="method-action">
+							<a href="https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=8e7c84516ecbdea853f8701c77f84da1&redirect_uri=http://localhost:8080/login/kakao" class="method-action">
 								<img class="logo-kakao" src="images/login/kakao.png" alt="카카오 로고">
 								<span>Sign in with Kakao</span>
 							</a>
 						</div>
 						<div class="method-control">
-							<a href="#" class="method-action">
+							<a href="https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=THJKE9rRB4_bG67PmKK1&state=dfjkd2DLsflk&redirect_uri=http://localhost:8080/login/naver" class="method-action">
 								<img class="logo-naver" src="images/login/naver.png" alt="네이버 로고">
 								<span>Sign in with Naver</span>
 							</a>
@@ -53,5 +54,6 @@
 				</section>
 			</div>
 		</main>
+	<script src="/js/login.js"></script>
 	</body>
 </html>

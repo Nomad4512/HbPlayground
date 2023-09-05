@@ -2,6 +2,7 @@ package com.playwithme.hyunbin.controller;
 
 import com.playwithme.hyunbin.domain.Post;
 import com.playwithme.hyunbin.service.PostService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -18,10 +19,10 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/board")
+@RequiredArgsConstructor
 public class PostController {
 
-    @Autowired
-    private PostService postService;
+    private final PostService postService;
 
     // 전체 목록 조회
     @GetMapping("")

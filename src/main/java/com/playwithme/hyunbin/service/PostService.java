@@ -3,6 +3,7 @@ package com.playwithme.hyunbin.service;
 import com.playwithme.hyunbin.domain.Post;
 import com.playwithme.hyunbin.repository.PostRepository;
 import jakarta.transaction.Transactional;
+import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -10,13 +11,10 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 @Service
+@RequiredArgsConstructor
 public class PostService {
 
     private final PostRepository postRepository;
-
-    public PostService(PostRepository postRepository) {
-        this.postRepository = postRepository;
-    }
 
     // 전체 목록 조회
     public Page<Post> getAllpostsByPage(int page, int pageSize) {
