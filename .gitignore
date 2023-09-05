@@ -7,7 +7,7 @@ build/
 src/main/resources/application.yml
 src/main/resources/application-oauth.yml
 src/test/resources/application.yml
-!/diary/memo.md
+/diary/memo.md
 
 ### STS ###
 .apt_generated

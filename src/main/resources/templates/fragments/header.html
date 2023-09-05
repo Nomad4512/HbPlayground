@@ -17,7 +17,8 @@
                     <li class="nav-item"><a href="#projects-section" class="nav-link"><span>Projects</span></a></li>
                     <li class="nav-item"><a href="#blog-section" class="nav-link"><span>My Blog</span></a></li>
                     <li class="nav-item" th:unless="${session.nickname != null}"><a href="/login" class="nav-link"><span>Login</span></a></li>
-                    <li class="nav-item" th:if="${session.nickname != null}"><a href="https://kauth.kakao.com/oauth/logout?client_id=8e7c84516ecbdea853f8701c77f84da1&logout_redirect_uri=http://localhost:8080/logout" class="nav-link"><span>Logout</span></a></li>
+                    <li class="nav-item" th:if="${session.nickname != null && session.platform == 'KAKAO'}"><a href="https://kauth.kakao.com/oauth/logout?client_id=8e7c84516ecbdea853f8701c77f84da1&logout_redirect_uri=http://localhost:8080/logout" class="nav-link"><span>Logout</span></a></li>
+                    <li class="nav-item" th:if="${session.nickname != null && session.platform == 'NAVER'}"><a href="#" onclick="handleNaverLogout()" class="nav-link"><span>Logout</span></a></li>
                 </ul>
             </div>
         </div>

@@ -27,15 +27,7 @@ public class IndexController {
         return "index";
     }
 
-    @GetMapping("/logout")
-    public String logout(HttpSession session, Model model) {
-        session.invalidate();
 
-        // 로그아웃 플래그 추가
-        model.addAttribute("loggedOut", true);
-
-        return "login/logoutAlert";
-    }
 
 
 }
