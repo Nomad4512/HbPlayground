@@ -32,18 +32,9 @@ public class LogoutController {
     @Value("${oauth2.naver.clientSecret}")
     private String naverSecretKey;
 
-    // 네이버 소셜 로그아웃 (API가 없어서 access_token삭제로 로그아웃 구현)
     @PostMapping("/naver/logout")
-    public ResponseEntity<?> naverLogout(@RequestBody String accessToken) {
-        String apiUrl = String.format("https://nid.naver.com/oauth2.0/token?grant_type=delete&client_id=%s&client_secret=%s&access_token=%s&service_provider=NAVER", naverClientId, naverSecretKey, accessToken);
-
-        RestTemplate restTemplate = new RestTemplate();
-        ResponseEntity<String> response = restTemplate.exchange(apiUrl, HttpMethod.GET, null, String.class);
-
-        if (response.getStatusCode() == HttpStatus.OK) {
-            return ResponseEntity.ok().build();
-        } else {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response.getBody());
-        }
+    public ResponseEntity<?> logout(HttpSession session) {
+        session.invalidate();
+        return ResponseEntity.ok().build();
     }
 }
