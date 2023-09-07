@@ -11,14 +11,14 @@
                 <ul class="navbar-nav nav ml-auto">
                     <li class="nav-item"><a href="/" class="nav-link"><span>Home</span></a></li>
                     <li class="nav-item"><a href="/board" class="nav-link"><span>Board</span></a></li>
-                    <li class="nav-item"><a href="#resume-section" class="nav-link"><span>Resume</span></a></li>
-                    <li class="nav-item"><a href="#services-section" class="nav-link"><span>Services</span></a></li>
-                    <li class="nav-item"><a href="#skills-section" class="nav-link"><span>Skills</span></a></li>
-                    <li class="nav-item"><a href="#projects-section" class="nav-link"><span>Projects</span></a></li>
-                    <li class="nav-item"><a href="#blog-section" class="nav-link"><span>My Blog</span></a></li>
+                    <li class="nav-item"><a href="#portfolio-section" class="nav-link"><span>Portfolio</span></a></li>
+                    <li class="nav-item"><a href="#services-section" class="nav-link grey-nav"><span>Services</span></a></li>
+                    <li class="nav-item"><a href="#skills-section" class="nav-link grey-nav"><span>Skills</span></a></li>
+                    <li class="nav-item"><a href="#projects-section" class="nav-link grey-nav"><span>Projects</span></a></li>
+                    <li class="nav-item"><a href="#blog-section" class="nav-link grey-nav"><span>My Blog</span></a></li>
                     <li class="nav-item" th:unless="${session.nickname != null}"><a href="/login" class="nav-link"><span>Login</span></a></li>
                     <li class="nav-item" th:if="${session.nickname != null && session.platform == 'KAKAO'}"><a href="https://kauth.kakao.com/oauth/logout?client_id=8e7c84516ecbdea853f8701c77f84da1&logout_redirect_uri=http://localhost:8080/kakao/logout" class="nav-link"><span>Logout</span></a></li>
-                    <li class="nav-item nav-link" th:if="${session.nickname != null && session.platform == 'NAVER'}"><a href="#" onclick="logoutNaver()"><span>Logout</span></a></li>
+                    <li class="nav-item" th:if="${session.nickname != null && session.platform == 'NAVER'}"><a href="#" onclick="logoutNaver()"><span>Logout</span></a></li>
                 </ul>
             </div>
         </div>

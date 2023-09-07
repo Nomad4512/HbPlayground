@@ -18,14 +18,17 @@
 
 
 	var fullHeight = function() {
+        var reducedHeight = $(window).height() - 80;
+        $('.js-fullheight').css('height', reducedHeight);
 
-		$('.js-fullheight').css('height', $(window).height());
-		$(window).resize(function(){
-			$('.js-fullheight').css('height', $(window).height());
-		});
+        $(window).resize(function(){
+            reducedHeight = $(window).height() - 80;
+            $('.js-fullheight').css('height', reducedHeight);
+        });
+    };
 
-	};
-	fullHeight();
+    fullHeight();
+
 
 	// loader
 	var loader = function() {

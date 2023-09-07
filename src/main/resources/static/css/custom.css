@@ -1,0 +1,22 @@
+/* 템플릿 외에 커스텀으로 꾸미는 공간입니다. */
+
+html, body {
+    scroll-behavior: smooth; /* 같은 페이지 내 id 이동시 스크롤 이동 */
+}
+
+.grey-nav {
+    color: #656565 !important;
+}
+
+.font-20 {
+    font-size: 20px;
+}
+
+.img-hb {
+     background-position: center top; /* 이미지 윗부분 잘리는 것 방지 */
+}
+
+.inner-box {
+    margin: 10px; /* Portfolio 박스간 간격 */
+}
+
