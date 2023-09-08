@@ -3,7 +3,7 @@ package com.playwithme.hyunbin.controller;
 import com.playwithme.hyunbin.domain.Post;
 import com.playwithme.hyunbin.service.PostService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -20,6 +20,7 @@ import java.util.List;
 @Controller
 @RequestMapping("/board")
 @RequiredArgsConstructor
+@Slf4j
 public class PostController {
 
     private final PostService postService;
@@ -87,7 +88,7 @@ public class PostController {
         post.setPassword(password);
         post.setContent(content);
         post.setCreatedDate(LocalDateTime.now());
-
+        log.info("게시글 정보 : {}",post);
         postService.save(post);
 
         return ResponseEntity.status(HttpStatus.CREATED)
@@ -120,7 +121,7 @@ public class PostController {
         existingPost.setPassword(updatedPost.getPassword());
         existingPost.setContent(updatedPost.getContent());
         existingPost.setModifiedDate(LocalDateTime.now());
-
+        log.info("게시글 수정 정보 {}",existingPost);
         postService.save(existingPost);
 
         return ResponseEntity.status(HttpStatus.OK).header("Location", "/board")

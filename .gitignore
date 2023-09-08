@@ -5,9 +5,10 @@ build/
 !**/src/main/**/build/
 !**/src/test/**/build/
 src/main/resources/application.yml
-src/main/resources/application-oauth.yml
 src/test/resources/application.yml
 /diary/memo.md
+Dockerfile
+.dockerignore
 
 ### STS ###
 .apt_generated
