@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <div th:replace="~{fragments/head.html :: fragment-head}"></div>
+    <link rel="stylesheet" href="/css/login.css">
+    <body>
+        <main class="main">
+            <div class="container">
+                <section class="wrapper">
+                    <div class="heading">
+                        <h1 class="text text-large">회원가입</h1>
+                    </div>
+                    <form class="form" th:action=@{/signup} th:object="${user}" method="post">
+                        <div class="input-control">
+                            <label th:for="userEmail" class="input-label" hidden>email</label>
+                            <input type="text" th:field="*{userEmail}" class="input-field" placeholder="이메일 아이디">
+                        </div>
+                        <div class="input-control">
+                            <label th:for="userPw1" class="input-label" hidden>password</label>
+                            <input type="password" th:field="*{userPw1}" class="input-field" placeholder="비밀번호">
+                        </div>
+                        <div class="input-control">
+                            <label th:for="userPw2" class="input-label" hidden>password2</label>
+                            <input type="password" th:field="*{userPw2}" class="input-field" placeholder="비밀번호 재입력">
+                        </div>
+                        <div class="input-control">
+                            <label th:for="userName" class="input-label" hidden>userName</label>
+                            <input type="text" th:field="*{userName}" class="input-field" placeholder="이름 또는 닉네임">
+                        </div>
+                        <div class="input-control pdtp30">
+                            <input type="button" name="cancel" class="btn btn-cancel" onclick="history.back()" value="취소">
+                            <input type="submit" name="submit" class="input-submit" value="회원가입 완료">
+                        </div>
+                    </form>
+                </section>
+            </div>
+        </main>
+    </body>
+</html>
