@@ -138,6 +138,7 @@ img {
 }
 .main .wrapper .form .input-control {
   display: flex;
+
   align-items: center;
   justify-content: space-between;
   margin-bottom: 1.25rem;
@@ -176,6 +177,11 @@ img {
   text-transform: capitalize;
   text-rendering: optimizeLegibility;
 }
+.main .wrapper .form .input-submit:disabled {
+    background: var(--color-grayish);
+    cursor: default
+}
+
 .main .wrapper .striped {
   display: flex;
   flex-direction: row;
@@ -259,4 +265,30 @@ img {
 
 .pdtp30 {
     padding-top: 30px;
+}
+
+.caution .error {
+    color: #f24257;
+    font-size: 0.8rem;
+    min-height: 1.2em;
+    margin-left: 1rem;
+}
+
+.signup-input {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 8px;
+}
+
+.input-field {
+    margin-bottom: 3px;
+}
+
+label {
+    margin-bottom: 0;
+}
+
+.signup-btn {
+    display: flex;
+    justify-content: space-between;
 }

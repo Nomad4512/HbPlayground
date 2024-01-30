@@ -10,29 +10,34 @@
                         <h1 class="text text-large">회원가입</h1>
                     </div>
                     <form class="form" th:action=@{/signup} th:object="${user}" method="post">
-                        <div class="input-control">
+                        <div class="signup-input">
                             <label th:for="userEmail" class="input-label" hidden>email</label>
-                            <input type="text" th:field="*{userEmail}" class="input-field" placeholder="이메일 아이디">
+                            <input type="text" th:field="*{userEmail}" class="input-field" placeholder="이메일">
+                            <div class="caution" id="error_msg_email"><label class="error"></label></div>
                         </div>
-                        <div class="input-control">
+                        <div class="signup-input">
                             <label th:for="userPw1" class="input-label" hidden>password</label>
                             <input type="password" th:field="*{userPw1}" class="input-field" placeholder="비밀번호">
+                            <div class="caution" id="error_msg_pw"><label class="error"></label></div>
                         </div>
-                        <div class="input-control">
+                        <div class="signup-input">
                             <label th:for="userPw2" class="input-label" hidden>password2</label>
                             <input type="password" th:field="*{userPw2}" class="input-field" placeholder="비밀번호 재입력">
+                            <div class="caution" id="error_msg_pwr"><label class="error"></label></div>
                         </div>
-                        <div class="input-control">
+                        <div class="signup-input">
                             <label th:for="userName" class="input-label" hidden>userName</label>
-                            <input type="text" th:field="*{userName}" class="input-field" placeholder="이름 또는 닉네임">
+                            <input type="text" th:field="*{userName}" class="input-field" placeholder="닉네임">
+                            <div class="caution" id="error_msg_name"><label class="error"></label></div>
                         </div>
-                        <div class="input-control pdtp30">
+                        <div class="signup-btn pdtp30">
                             <input type="button" name="cancel" class="btn btn-cancel" onclick="history.back()" value="취소">
-                            <input type="submit" name="submit" class="input-submit" value="회원가입 완료">
+                            <input type="submit" name="submit" class="input-submit" value="회원가입 완료" disabled>
                         </div>
                     </form>
                 </section>
             </div>
         </main>
+        <script src="js/login.js"></script>
     </body>
 </html>

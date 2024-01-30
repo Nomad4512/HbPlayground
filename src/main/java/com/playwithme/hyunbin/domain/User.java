@@ -1,6 +1,7 @@
 package com.playwithme.hyunbin.domain;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotEmpty;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
@@ -29,6 +30,6 @@ public class User {
     private String userName;
 
     @Column(name = "signup_date")
-    private LocalDateTime signupDate;
+    private String signupDate;
 
 }
